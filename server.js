@@ -44,7 +44,7 @@ app.get('/', function(request, response) {
 
 /*app.get('/my-list', function(request, response) {
   response.sendFile(__dirname + '/views/my-list.html');
-});*/
+});
 
 app.get('/login', function(request, response) {
   response.sendFile(__dirname + '/public/login.html');
@@ -52,7 +52,7 @@ app.get('/login', function(request, response) {
 
 app.get('/register', function(request, response) {
   response.sendFile(__dirname + '/public/register.html');
-});
+});*/
 
 app.put('/api/users/:id', (req, res) => {
   console.log(req.body);
