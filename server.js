@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
 mongoose.set('useFindAndModify', false);
-Content-Security-Policy: default-src 'none';
 
 // Here we use destructuring assignment with renaming so the two variables
 // called router (from ./users and ./auth) have different names
