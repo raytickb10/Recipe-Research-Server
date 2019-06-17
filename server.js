@@ -15,7 +15,6 @@ mongoose.set('useFindAndModify', false);
 // console.log(bobby); // De Niro - the variable name is bobby, not robert
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
-const { router: createAuthToken } = require('./auth');
 
 mongoose.Promise = global.Promise;
 
