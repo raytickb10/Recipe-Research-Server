@@ -42,7 +42,6 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
-//app.use('/auth/refresh', authRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
@@ -55,11 +54,6 @@ app.get('/api/protected', jwtAuth, (req, res) => {
   return res.json({
     data: 'rosebud'
   });
-});
-
-app.post('/auth/refresh', jwtAuth, (req, res) => {
-  const authToken = createAuthToken(req.user);
-  res.json({authToken});
 });
 
 app.use('*', (req, res) => {
