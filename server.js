@@ -15,6 +15,7 @@ mongoose.set('useFindAndModify', false);
 // console.log(bobby); // De Niro - the variable name is bobby, not robert
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+const { router: createAuthToken } = require('./auth');
 
 mongoose.Promise = global.Promise;
 
@@ -41,7 +42,7 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
-app.use('/auth/refresh', authRouter);
+//app.use('/auth/refresh', authRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
@@ -54,6 +55,11 @@ app.get('/api/protected', jwtAuth, (req, res) => {
   return res.json({
     data: 'rosebud'
   });
+});
+
+app.post('/auth/refresh', jwtAuth, (req, res) => {
+  const authToken = createAuthToken(req.user);
+  res.json({authToken});
 });
 
 app.use('*', (req, res) => {
